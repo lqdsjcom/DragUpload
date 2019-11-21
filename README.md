@@ -7,9 +7,6 @@ javascript图片上传（可拖拽）
 # 方法2：
 import DragUpload from 'DragUpload';
 
-<div id="upload"></div>
-
-
 var callback = function (res) {
     files = res[0];
     console.log(files);
