@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>python</title>
+    <style>
+        #drop_area {
+            height: 200px;
+            width: 200px;
+            border: 1px solid rgb(204, 204, 204);
+            cursor: pointer;
+            float: left;
+            margin: 0 10px;
+        }
+
+        #drop_area .preview {
+            text-align: center;
+            color: #999;
+            font-size: 20px;
+            line-height: 200px;
+            text-align: center;
+        }
+        #appendImg{
+            float: left;
+        }
+        #appendImg img{
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<script src="../upload.js"></script>
+
+<body>
+    <div>
+        <div id="appendImg">
+
+        </div>
+        <div id="drop_area"></div>
+
+    </div>
+
+    <script>
+        var callback = function (res) {
+            files = res[0];
+            if (files) {
+                loadImg(files);
+            }
+            console.log(files);
+        }
+        function loadImg(files) {
+            files = files;
+            var reader = new FileReader();
+            reader.readAsDataURL(files);
+            reader.onload = function (e) {
+                var imgUlr = e.target.result;
+                var img = document.createElement('img');
+                img.src = imgUlr;
+                img.width = 200;
+                img.height = 200;
+                var appendImg = document.getElementById('appendImg');
+                appendImg.append(img);
+            };
+        }
+        var dragImgUpload = new DragUpload("drop_area", callback);
+
+    </script>
+</body>
+
+
+</html>
