@@ -9,10 +9,12 @@ import DragUpload from 'DragUpload';
 
 <div id="upload"></div>
 
+
 var callback = function (res) {
     files = res[0];
     console.log(files);
 }
+
 new DragUpload("upload", callback); //id&回调事件
 
 
